@@ -1,5 +1,74 @@
-🏋️‍♂️ Workout Timer AppA dynamic React application designed to calculate workout durations based on exercise types, sets, and speed, featuring real-time updates and audio feedback.📖 OverviewThis application helps users plan their fitness sessions by calculating the total duration of a workout. It factors in the number of exercises, the number of sets, individual exercise speed, and break lengths to provide an accurate time estimate.✨ Key FeaturesDynamic Workout List: The available workouts and their exercise counts change based on the time of day (AM vs. PM).Real-Time Calculations: Automatically updates the total duration whenever user inputs (sets, speed, or breaks) change.Interactive Controls: Users can fine-tune the calculated time manually using increment and decrement buttons.Audio Feedback: Plays a "click" sound whenever the duration updates, provided the sound is enabled.Live Clock: Displays the current date and time, updated every second.Tab Synchronization: Updates the browser document title to reflect the current workout's exercise count.🛠️ Technical StackReact (Hooks): * useState: Manages local state for workout parameters and timing.useEffect: Handles side effects like interval timers, document title updates, and sound playback.useMemo & memo: Optimizes performance by memoizing complex objects and preventing unnecessary re-renders.CSS3: Uses modern styling techniques including Flexbox, CSS Gradients, and responsive units (rem).Internationalization API: Uses Intl.DateTimeFormat for professional date and time formatting.📂 Project StructureApp.js: The root component managing the global time state and workout definitions.Calculator.js: The core logic component that calculates workout duration and handles user input.ToggleSounds.js: A memoized component for switching audio feedback on or off.index.css: Contains all global styles and layout configurations.🚀 Getting StartedPrerequisitesNode.js (latest stable version recommended)npm or yarnInstallationClone the repository:Bashgit clone https://github.com/your-username/workout-timer.git
-Navigate to the project folder:Bashcd workout-timer
-Install dependencies:Bashnpm install
-Launch the development server:Bashnpm start
-📝 Technical Implementation DetailsCalculation Formula: The duration is calculated using the formula:$$\text{Duration} = \frac{(\text{Exercises} \times \text{Sets} \times \text{Speed}) + ((\text{Sets} - 1) \times \text{Break} \times 60)}{60}$$Performance: The Calculator and ToggleSounds components are wrapped in memo to ensure they only re-render when their specific props change.Clean-up: The App component includes a clean-up function for the setInterval to prevent memory leaks.
+# 🏋️‍♂️ Workout Timer App
+
+![Workout Timer Screenshot](./screenshots/app-screenshot.png)
+
+A sleek, dynamic React application designed to calculate total workout durations based on exercise types, sets, and performance speed. This app features real-time updates, audio feedback, and time-of-day awareness.
+
+## 📖 Overview
+The Workout Timer helps fitness enthusiasts plan their sessions accurately. It doesn't just calculate movements; it factors in rest periods and individual pacing to give a realistic completion time.
+
+---
+
+## ✨ Key Features
+* **Dynamic Workout Logic**: The available exercises and their counts automatically adjust based on whether it is morning (AM) or evening (PM).
+* **Real-Time Calculations**: Uses a specialized formula to update the total duration instantly whenever inputs like sets, speed, or break lengths change.
+* **Audio Feedback**: Plays a "click" sound notification upon time updates to enhance user interaction (can be toggled on/off).
+* **Live Clock**: Displays a continuously updating date and time formatted for clarity.
+* **Interactive Controls**: Features range sliders for precise input and manual increment/decrement buttons for quick adjustments.
+* **Browser Integration**: Dynamically updates the browser tab title to reflect the current workout's exercise count.
+
+---
+
+## 🛠️ Technical Stack
+* **React (Hooks)**: 
+    * `useState`: Manages state for workout parameters, time, and sound settings.
+    * `useEffect`: Synchronizes side effects like the 1-second interval timer, audio playback, and DOM title updates.
+    * `useMemo` & `memo`: Optimizes performance by memoizing complex objects and preventing unnecessary re-renders of child components.
+* **CSS3**: Modern styling using Flexbox for centering, CSS Gradients for vibrant UI, and responsive units (`rem`).
+* **Internationalization API**: Utilizes `Intl.DateTimeFormat` for professional, locale-aware time formatting.
+
+---
+
+## 📂 Project Structure
+* `App.js`: The main hub managing global time state and dynamic workout definitions.
+* `Calculator.js`: The core engine handling duration logic, formulas, and input forms.
+* `ToggleSounds.js`: A specialized button component for managing audio state.
+* `index.css`: Contains all visual styling and layout rules.
+* `ClickSound.m4a`: The audio asset used for user feedback.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+* Node.js (latest stable version)
+* npm or yarn
+
+### Installation
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/your-username/workout-timer.git](https://github.com/your-username/workout-timer.git)
+    ```
+2.  **Navigate to the project directory**:
+    ```bash
+    cd workout-timer
+    ```
+3.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+4.  **Run the app**:
+    ```bash
+    npm start
+    ```
+
+---
+
+## 📝 Technical Implementation Details
+* **The Formula**: Duration is calculated using:
+    $$Duration = \frac{(Exercises \times Sets \times Speed) + ((Sets - 1) \times Break \times 60)}{60}$$
+   
+* **Performance Optimization**: The `Calculator` component is wrapped in `memo` to ensure it only updates when its specific props (`workouts` or `allowSound`) change.
+* **Cleanup**: The `App` component properly clears the `setInterval` on unmount to prevent memory leaks.
+
+---
