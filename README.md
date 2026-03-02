@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# 🏋️‍♂️ Workout Timer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Workout Timer Screenshot](./screenshots/app-screenshot.png)
 
-## Available Scripts
+A sleek, dynamic React application designed to calculate total workout durations based on exercise types, sets, and performance speed. This app features real-time updates, audio feedback, and time-of-day awareness.
 
-In the project directory, you can run:
+## 📖 Overview
+The Workout Timer helps fitness enthusiasts plan their sessions accurately. It doesn't just calculate movements; it factors in rest periods and individual pacing to give a realistic completion time.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Key Features
+* **Dynamic Workout Logic**: The available exercises and their counts automatically adjust based on whether it is morning (AM) or evening (PM).
+* **Real-Time Calculations**: Uses a specialized formula to update the total duration instantly whenever inputs like sets, speed, or break lengths change.
+* **Audio Feedback**: Plays a "click" sound notification upon time updates to enhance user interaction (can be toggled on/off).
+* **Live Clock**: Displays a continuously updating date and time formatted for clarity.
+* **Interactive Controls**: Features range sliders for precise input and manual increment/decrement buttons for quick adjustments.
+* **Browser Integration**: Dynamically updates the browser tab title to reflect the current workout's exercise count.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Technical Stack
+* **React (Hooks)**: 
+    * `useState`: Manages state for workout parameters, time, and sound settings.
+    * `useEffect`: Synchronizes side effects like the 1-second interval timer, audio playback, and DOM title updates.
+    * `useMemo` & `memo`: Optimizes performance by memoizing complex objects and preventing unnecessary re-renders of child components.
+* **CSS3**: Modern styling using Flexbox for centering, CSS Gradients for vibrant UI, and responsive units (`rem`).
+* **Internationalization API**: Utilizes `Intl.DateTimeFormat` for professional, locale-aware time formatting.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Project Structure
+* `App.js`: The main hub managing global time state and dynamic workout definitions.
+* `Calculator.js`: The core engine handling duration logic, formulas, and input forms.
+* `ToggleSounds.js`: A specialized button component for managing audio state.
+* `index.css`: Contains all visual styling and layout rules.
+* `ClickSound.m4a`: The audio asset used for user feedback.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+* Node.js (latest stable version)
+* npm or yarn
 
-### `npm run eject`
+### Installation
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/your-username/workout-timer.git](https://github.com/your-username/workout-timer.git)
+    ```
+2.  **Navigate to the project directory**:
+    ```bash
+    cd workout-timer
+    ```
+3.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+4.  **Run the app**:
+    ```bash
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📝 Technical Implementation Details
+* **The Formula**: Duration is calculated using:
+    $$Duration = \frac{(Exercises \times Sets \times Speed) + ((Sets - 1) \times Break \times 60)}{60}$$
+   
+* **Performance Optimization**: The `Calculator` component is wrapped in `memo` to ensure it only updates when its specific props (`workouts` or `allowSound`) change.
+* **Cleanup**: The `App` component properly clears the `setInterval` on unmount to prevent memory leaks.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
