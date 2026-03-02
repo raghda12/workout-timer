@@ -1,6 +1,6 @@
 # 🏋️‍♂️ Workout Timer App
 
-![Workout Timer Screenshot](./screenshots/app-screenshot.png)
+![Workout Timer Screenshot](./app-screenshot.png)
 
 A sleek, dynamic React application designed to calculate total workout durations based on exercise types, sets, and performance speed. This app features real-time updates, audio feedback, and time-of-day awareness.
 
